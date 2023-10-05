@@ -5,17 +5,17 @@ void quickSort(int* mas, int left, int right) {
 	if (left >= right) {
 		return;
 	}
-	int pivot = left+1;
+	int pivot = left;
 	for (int i = left; i < right; i++) {
 		if (mas[i] < mas[left]) {
-			swap(mas[i], mas[pivot+1]);
-			pivot++;
+			swap(mas[i], mas[++pivot]);
+			
 		}
 	}
-	swap(mas[0], mas[pivot]);
+	swap(mas[left], mas[pivot]);
 	
-	quickSort(mas, left, pivot);
-	quickSort(mas, pivot, right);
+	quickSort(mas, left, pivot-1);
+	quickSort(mas, pivot+1, right);
 }
 int main() {
 	const int size = 10;
