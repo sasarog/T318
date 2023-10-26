@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 class Chel
 {
@@ -10,13 +10,13 @@ public:
 	Chel();
 	Chel(int v, std::string n);
 	/// <summary>
-	/// Выводит на консоль всю информацию о человеке
+	/// Р’С‹РІРѕРґРёС‚ РЅР° РєРѕРЅСЃРѕР»СЊ РІСЃСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ С‡РµР»РѕРІРµРєРµ   Рґ
 	/// </summary>
 	virtual void print();
 	/// <summary>
-	/// Задаёт значение для поля возраста
+	/// Р—Р°РґР°С‘С‚ Р·РЅР°С‡РµРЅРёРµ РґР»СЏ РїРѕР»СЏ РІРѕР·СЂР°СЃС‚Р°
 	/// </summary>
-	/// <param name="v">Задаваемый возраст</param>
+	/// <param name="v">Р—Р°РґР°РІР°РµРјС‹Р№ РІРѕР·СЂР°СЃС‚</param>
 	void setVozr(int v);
 	int getVozr();
 	void setName(std::string name);
