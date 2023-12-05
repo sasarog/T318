@@ -1,5 +1,9 @@
 ﻿#include "LList.h"
 
+LList::LList()
+{
+}
+
 LList::LList(const string& s, int a)
 {
 	this->data = make_shared<Chel>(s, a);
@@ -9,7 +13,7 @@ void LList::add(const string& s, int a)
 {
 	if (this->data == nullptr) {
 		this->data = make_shared<Chel>(s, a);
-		return ;
+		return;
 	}
 	if (this->next != nullptr) {
 		this->next->add(s, a);
@@ -21,7 +25,9 @@ void LList::add(const string& s, int a)
 
 void LList::prinitAll()
 {
-	this->data->print();
+	if (this->data != nullptr) {
+		this->data->print();
+	}
 	if (this->next != nullptr) {
 		this->next->prinitAll();
 	}
@@ -45,4 +51,30 @@ void LList::deleteLast()
 	else {
 		this->next->deleteLast();
 	}
+}
+shared_ptr<Chel> LList::find(const string& sFind)
+{
+	//Если данных в списке нет, то и возвращать нечего
+	if (this->data == nullptr) {
+		return nullptr;
+	}
+	//Если чел нашёлся, возвращается указатель на него
+	if (this->data->name == sFind) {
+		return this->data;
+	}
+	//если чел не тот, которого искали
+	else {
+		//Если есть следующий в списке
+		if (this->next != nullptr) {
+			//Проверяется следующий
+			this->next->find(sFind);
+		}
+		//Если дошли до конца списка и не наткнулись на искомого чела
+		else {
+			//Значит такого чела нет
+			return nullptr;
+		}
+	}
+
+	return nullptr;
 }
