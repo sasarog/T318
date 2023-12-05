@@ -15,7 +15,7 @@ struct Chel {
 	void print() {
 		cout << endl
 			<< "Name: " << this->name
-			<< "\nAge: " << this->age
+			<< "  Age: " << this->age
 			<< endl;
 	}
 };
@@ -29,6 +29,7 @@ public:
 	void add(const string& s, int a);
 	void prinitAll();
 	void deleteLast();
+	shared_ptr<Chel> find(const string& sFind);
 
 };
 
