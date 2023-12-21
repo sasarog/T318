@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 #include "../LinkedList/LList.h"
 using namespace std;
@@ -12,19 +12,19 @@ public:
 	Hash();
 	Hash(int size);
 	/// <summary>
-	/// Добавление элемента
+	/// Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°
 	/// </summary>
-	/// <param name="n">Имя нового человека</param>
-	/// <param name="a">Возраст нового человека</param>
+	/// <param name="n">РРјСЏ РЅРѕРІРѕРіРѕ С‡РµР»РѕРІРµРєР°</param>
+	/// <param name="a">Р’РѕР·СЂР°СЃС‚ РЅРѕРІРѕРіРѕ С‡РµР»РѕРІРµРєР°</param>
 	void add(const string& n, int a);
 	/// <summary>
-	/// Поиск чела в хеш-таблице
+	/// РџРѕРёСЃРє С‡РµР»Р° РІ С…РµС€-С‚Р°Р±Р»РёС†Рµ
 	/// </summary>
-	/// <param name="n">Имя чела</param>
-	/// <returns>Указатель на найденного чела</returns>
+	/// <param name="n">РРјСЏ С‡РµР»Р°</param>
+	/// <returns>РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РЅР°Р№РґРµРЅРЅРѕРіРѕ С‡РµР»Р°</returns>
 	shared_ptr<Chel> find(const string& n);
 	/// <summary>
-	/// Вывод всей хеш-таблицы
+	/// Р’С‹РІРѕРґ РІСЃРµР№ С…РµС€-С‚Р°Р±Р»РёС†С‹
 	/// </summary>
 	void print();
 
