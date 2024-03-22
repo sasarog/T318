@@ -27,6 +27,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CLR_DLL", "CLR_DLL\CLR_DLL.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PaintingProject", "PaintingProject\PaintingProject.vcxproj", "{C60B3BEA-C881-44F1-BDC5-F0A46B196BEA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AnimeProject", "AnimeProject\AnimeProject.vcxproj", "{BCE7D78B-37F5-4DCF-93F8-3E069938FFD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -131,6 +133,14 @@ Global
 		{C60B3BEA-C881-44F1-BDC5-F0A46B196BEA}.Release|x64.Build.0 = Release|x64
 		{C60B3BEA-C881-44F1-BDC5-F0A46B196BEA}.Release|x86.ActiveCfg = Release|Win32
 		{C60B3BEA-C881-44F1-BDC5-F0A46B196BEA}.Release|x86.Build.0 = Release|Win32
+		{BCE7D78B-37F5-4DCF-93F8-3E069938FFD8}.Debug|x64.ActiveCfg = Debug|x64
+		{BCE7D78B-37F5-4DCF-93F8-3E069938FFD8}.Debug|x64.Build.0 = Debug|x64
+		{BCE7D78B-37F5-4DCF-93F8-3E069938FFD8}.Debug|x86.ActiveCfg = Debug|Win32
+		{BCE7D78B-37F5-4DCF-93F8-3E069938FFD8}.Debug|x86.Build.0 = Debug|Win32
+		{BCE7D78B-37F5-4DCF-93F8-3E069938FFD8}.Release|x64.ActiveCfg = Release|x64
+		{BCE7D78B-37F5-4DCF-93F8-3E069938FFD8}.Release|x64.Build.0 = Release|x64
+		{BCE7D78B-37F5-4DCF-93F8-3E069938FFD8}.Release|x86.ActiveCfg = Release|Win32
+		{BCE7D78B-37F5-4DCF-93F8-3E069938FFD8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
