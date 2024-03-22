@@ -1,5 +1,5 @@
 #pragma once
-
+#include "KinoForm.h"
 namespace AnimeProject {
 
 	using namespace System;
@@ -50,6 +50,7 @@ namespace AnimeProject {
 	private: System::Windows::Forms::Button^ btnVerh;
 	private: System::Windows::Forms::Button^ btnLevo;
 	private: System::Windows::Forms::Button^ btnNiz;
+	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ btnPravo;
 	private: System::ComponentModel::IContainer^ components;
 
@@ -76,6 +77,7 @@ namespace AnimeProject {
 			this->btnLevo = (gcnew System::Windows::Forms::Button());
 			this->btnNiz = (gcnew System::Windows::Forms::Button());
 			this->btnPravo = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			this->SuspendLayout();
@@ -161,11 +163,22 @@ namespace AnimeProject {
 			this->btnPravo->UseVisualStyleBackColor = true;
 			this->btnPravo->Click += gcnew System::EventHandler(this, &AnimeForm::btnPravo_Click);
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(548, 683);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(214, 72);
+			this->button1->TabIndex = 8;
+			this->button1->Text = L"KINO";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &AnimeForm::button1_Click);
+			// 
 			// AnimeForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1877, 767);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->btnPravo);
 			this->Controls->Add(this->btnNiz);
 			this->Controls->Add(this->btnLevo);
@@ -258,6 +271,12 @@ namespace AnimeProject {
 	}
 	private: System::Void btnLevo_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->napr = napravlenie::levo;
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		KinoForm^ eva = gcnew KinoForm();
+		this->Hide();
+		eva->ShowDialog();
+		this->Show();
 	}
 	};
 }
