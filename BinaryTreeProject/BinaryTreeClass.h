@@ -21,8 +21,22 @@ struct Rostok {
 	}
 };
 
+enum nodeType {
+	listokFromRight,
+	listokFromLeft,
+	onlyLeft,
+	onlyRight,
+	oba
+};
 class BinaryTreeClass
 {
+private:
+	void deleteListok(BinaryTreeClass* curr, BinaryTreeClass* parent, bool isLeft);
+	void deleteLeft(BinaryTreeClass* curr, BinaryTreeClass* parent);
+	void deleteRight(BinaryTreeClass* curr, BinaryTreeClass* parent);
+	void deleteDouble(BinaryTreeClass* curr, BinaryTreeClass* parent);
+	nodeType defNodeType(BinaryTreeClass* node, BinaryTreeClass* parent);
+
 public:
 	BinaryTreeClass();
 	BinaryTreeClass(Rostok* elem);

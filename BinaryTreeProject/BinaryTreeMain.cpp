@@ -19,6 +19,6 @@ int main() {
 	eva.add(new Rostok(11, 2, "40"));
 	eva.add(new Rostok(12, 2, "38"));
 	eva.add(new Rostok(13, 2, "45"));
-
+	eva.remove("35");
 	return 0;
 }

@@ -1,5 +1,123 @@
 ﻿#include "BinaryTreeClass.h"
 
+//удаляет листовой элемент
+void BinaryTreeClass::deleteListok(BinaryTreeClass* curr, BinaryTreeClass* parent, bool isLeft)
+{
+	//Если isLeft == true, значит удаляемый листок является левой веткой родителя
+	if (isLeft) {
+		parent->left = nullptr;
+
+	}
+	//Если нет, значит правой веткой
+	else {
+		parent->right = nullptr;
+
+	}
+	delete curr;
+}
+
+//Когда удаляемый узел - промежуточный слева от родителя с одним потомком
+void BinaryTreeClass::deleteLeft(BinaryTreeClass* curr, BinaryTreeClass* parent)
+{
+	//В зависимости от того, есть ли у него правый или левый потомок
+	//Прописывает родителю соответствующий указатель
+	if (curr->left != nullptr) {
+		//Если есть левый, переписывает левый
+		parent->left = curr->left;
+	}
+	else {
+		//Если есть правый, переписывает правый
+		parent->left = curr->right;
+	}
+	delete curr;
+}
+
+//То же, что и функция выше
+void BinaryTreeClass::deleteRight(BinaryTreeClass* curr, BinaryTreeClass* parent)
+{
+	if (curr->right != nullptr) {
+		parent->right = curr->right;
+	}
+	else {
+		parent->right = curr->left	;
+	}
+	delete curr;
+}
+
+//Удаление узла с двумя потомками
+void BinaryTreeClass::deleteDouble(BinaryTreeClass* curr, BinaryTreeClass* parent)
+{
+	//Идём вправо и всегда налево
+	BinaryTreeClass* tmp = curr->right;
+	BinaryTreeClass* tmpParent = curr;
+
+	//Идём, пока не найдём узел, у которого нет левого потомка
+	while (tmp->left != nullptr) {
+		tmpParent = tmp;
+		tmp = tmp->left;
+	}
+	//Удаляем данные, которые хранятся в удаляемом узле
+	delete curr->data;
+	//Отправляем в удаляемый узел копию данных из того, у которого нет левого потомка
+	curr->data = new Rostok(*tmp->data);
+	
+	
+
+	//Удаляем тот, у которого нет левого потомка, из которого украли данные
+	switch (defNodeType(tmp, tmpParent))
+	{
+	case nodeType::oba:
+		this->deleteDouble(tmp, tmpParent);
+		break;
+	case nodeType::onlyLeft:
+		this->deleteLeft(tmp, tmpParent);
+		break;
+	case nodeType::onlyRight:
+		this->deleteRight(tmp, tmpParent);
+		break;
+	case nodeType::listokFromLeft:
+		this->deleteListok(tmp, tmpParent, true);
+		break;
+	case nodeType::listokFromRight:
+		this->deleteListok(tmp, tmpParent, false);
+		break;
+
+	default:
+		break;
+	}
+	
+
+}
+
+nodeType BinaryTreeClass::defNodeType(BinaryTreeClass* node, BinaryTreeClass* parent)
+{
+	//Если оба потомка есть
+	if (node->left != nullptr && node->right != nullptr) {
+		return nodeType::oba;
+	}
+	else {
+		//Есть правый
+		if (node->left == nullptr && node->right != nullptr) {
+			return nodeType::onlyRight;
+		}
+		else {
+			//Есть левый
+			if (node->left != nullptr && node->right == nullptr) {
+				return nodeType::onlyLeft;
+			}
+			//нет ни одного
+			else {
+				if (parent->left == node) {
+					return nodeType::listokFromLeft;
+				}
+				else {
+					return nodeType::listokFromRight;
+				}
+			}
+		}
+	}
+}
+
 BinaryTreeClass::BinaryTreeClass()
 {
 }
@@ -40,6 +158,47 @@ void BinaryTreeClass::add(Rostok* elem)
 		}
 
 	}
+}
+
+void BinaryTreeClass::remove(const std::string& name)
+{
+	BinaryTreeClass* curr = this;
+	BinaryTreeClass* parent = nullptr;
+
+	while (curr != nullptr && curr->data->name != name) {
+		if (name < this->data->name) {
+			parent = curr;
+			curr = curr->left;
+		}
+		else {
+			parent = curr;
+			curr = curr->right;
+		}
+	}
+	switch (defNodeType(curr, parent))
+	{
+	case nodeType::oba:
+		this->deleteDouble(curr, parent);
+		break;
+	case nodeType::onlyLeft:
+		this->deleteLeft(curr, parent);
+		break;
+	case nodeType::onlyRight:
+		this->deleteRight(curr, parent);
+		break;
+	case nodeType::listokFromLeft:
+		this->deleteListok(curr, parent, true);
+		break;
+	case nodeType::listokFromRight:
+		this->deleteListok(curr, parent, false);
+		break;
+	
+	default:
+		break;
+	}
+
+	
+
 }
 
 Rostok* BinaryTreeClass::find(const std::string& name)
